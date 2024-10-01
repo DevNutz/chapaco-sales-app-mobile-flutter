@@ -1,7 +1,7 @@
-import 'package:chapacosales/pages/DummyPage.dart';
-import 'package:chapacosales/widgets/CustomInput.dart';
-import 'package:chapacosales/widgets/VersionText.dart';
-import 'package:chapacosales/widgets/LoadingOverlay.dart';
+import 'package:chapacosales/pages/dummy_page.dart';
+import 'package:chapacosales/widgets/custom_input.dart';
+import 'package:chapacosales/widgets/version_text.dart';
+import 'package:chapacosales/widgets/loading_overlay.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
