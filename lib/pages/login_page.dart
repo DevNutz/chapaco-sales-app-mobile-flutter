@@ -1,4 +1,5 @@
-import 'package:chapacosales/pages/dummy_page.dart';
+import 'package:chapacosales/pages/employee_homepage.dart';
+import 'package:chapacosales/utils/mock_users.dart';
 import 'package:chapacosales/widgets/custom_input.dart';
 import 'package:chapacosales/widgets/version_text.dart';
 import 'package:chapacosales/widgets/loading_overlay.dart';
@@ -18,6 +19,13 @@ class _LoginPageState extends State<LoginPage> {
   bool isLoading = false;
   String phoneNumber = 'tel:+591-78789345';
 
+  pushToScreen(StatelessWidget classPage) {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => classPage),
+    );
+  }
+
   Future<void> startLogging() async {
     setState(() {
       isLoading = true;
@@ -25,15 +33,27 @@ class _LoginPageState extends State<LoginPage> {
 
     await Future.delayed(const Duration(seconds: 2));
 
+    if (AdminUser['username'].toString() == _email && AdminUser['password'] == _password) {
+      // Navigate to the next page
+      pushToScreen(EmployeeHomepage());
+
+      return;
+    }
+
+    if (EmployeeUser['username'].toString() == _email && EmployeeUser['password'] == _password) {
+      // Navigate to the next page
+      pushToScreen(EmployeeHomepage());
+
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('ERROR LOGIN - USERNAME OR PASSWORD INVALID')),
+    );
+
     setState(() {
       isLoading = false;
     });
-
-    // Navigate to the next page
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => DummyPage()),
-    );
   }
 
 
@@ -42,9 +62,6 @@ class _LoginPageState extends State<LoginPage> {
       _formKey.currentState!.save();
       // Perform the login action here (e.g., API call)
       await startLogging();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Logging in with $_email')),
-      );
     }
   }
 
