@@ -6,6 +6,9 @@ version: 0.1.0
 environment:
   sdk: 3.5.2
 
+platforms:
+  android:
+
 dependencies:
   flutter:
     sdk: flutter
