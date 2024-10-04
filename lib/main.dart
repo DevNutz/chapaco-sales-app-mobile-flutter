@@ -1,4 +1,4 @@
-import 'package:chapacosales/pages/employee_homepage.dart';
+import 'package:chapacosales/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: EmployeeHomepage(),
+      home: LoginPage(),
     );
   }
 }
