@@ -1,18 +1,15 @@
+import 'package:chapacosales/models/table_state.dart';
 import 'package:flutter/material.dart';
-
-enum CardVariant { available, occupied, reserved, notAvailable, disabled }
 
 class TableCard extends StatefulWidget {
   final String title;
-  final String? subtitle;
-  final CardVariant variant;
+  final TableState tableState;
   final VoidCallback? onTap;
 
   const TableCard({
     super.key,
     required this.title,
-    this.subtitle,
-    required this.variant,
+    required this.tableState,
     this.onTap,
   });
 
@@ -21,48 +18,17 @@ class TableCard extends StatefulWidget {
 }
 
 class _TableCardState extends State<TableCard> {
-  Color? _getBackgroundColor(context) {
-    switch (widget.variant) {
-      case CardVariant.available:
-        return Theme.of(context).colorScheme.surfaceContainer;
-      // return Theme.of(context).colorScheme.secondary;
-      case CardVariant.occupied:
-        return Colors.greenAccent[100];
-      case CardVariant.reserved:
-        return Colors.indigoAccent[100];
-      case CardVariant.notAvailable:
-        return Colors.blueGrey[300];
-      case CardVariant.disabled:
-        return Theme.of(context).colorScheme.surface;
-    }
-  }
-
-  String _getSubtitle(CardVariant variant) {
-    switch (variant) {
-      case CardVariant.available:
-        return "Disponible";
-      case CardVariant.occupied:
-        return "Ocupada";
-      case CardVariant.reserved:
-        return "Reservada";
-      case CardVariant.notAvailable:
-        return "No Disponible";
-      case CardVariant.disabled:
-        return "";
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (widget.variant == CardVariant.disabled) {
+    if (widget.tableState == TableState.disabled) {
       return Card(
-        color: _getBackgroundColor(context),
+        color: widget.tableState.backgroundColor(context),
         elevation: 0,
       );
     }
 
     return Card(
-      color: _getBackgroundColor(context),
+      color: widget.tableState.backgroundColor(context),
       margin: EdgeInsets.zero,
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
@@ -81,7 +47,7 @@ class _TableCardState extends State<TableCard> {
                 fontSize: 24,
               ),
             ),
-            Text(_getSubtitle(widget.variant))
+            Text(widget.tableState.name)
           ],
         ),
       ),
