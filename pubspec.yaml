@@ -1,20 +1,27 @@
 name: chapacosales
-description: "A new Flutter project."
+description: "Restobar El Chapaco Sales Management System."
 publish_to: 'none'
 version: 0.1.0
 
 environment:
   sdk: ^3.5.2
 
+platforms: 
+  android:
+
 dependencies:
   flutter:
     sdk: flutter
   provider: ^6.1.2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  package_info_plus: ^8.0.2
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
