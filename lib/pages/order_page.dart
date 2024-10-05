@@ -49,33 +49,6 @@ class _OrderPageState extends State<OrderPage> {
                     "Mesa ${widget.table.tableNumber}",
                     style: const TextStyle(fontSize: 32),
                   ),
-                  // SegmentedButton(
-                  //   expandedInsets: const EdgeInsets.all(0),
-                  //   style: ButtonStyle(
-                  //       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  //       visualDensity:
-                  //           const VisualDensity(horizontal: 0, vertical: 0),
-                  //       textStyle: WidgetStateProperty.all(
-                  //           const TextStyle(fontSize: 13)),
-                  //       alignment: Alignment.center),
-                  //   showSelectedIcon: false,
-                  //   segments: const [
-                  //     ButtonSegment(
-                  //         value: TableState.available, label: Text('Disponible')),
-                  //     ButtonSegment(
-                  //         value: TableState.occupied, label: Text('Ocupada')),
-                  //     ButtonSegment(
-                  //         value: TableState.reserved, label: Text('Reservada')),
-                  //     ButtonSegment(
-                  //         value: TableState.notAvailable,
-                  //         label: Text(
-                  //           'No Disponible',
-                  //           textAlign: TextAlign.center,
-                  //         )),
-                  //   ],
-                  //   selected: _tableState,
-                  //   onSelectionChanged: updateTableState,
-                  // ),
                   const SizedBox(height: 8),
                   Text(
                     "Estado de la mesa",
@@ -101,7 +74,6 @@ class _OrderPageState extends State<OrderPage> {
                       );
                     }).toList(),
                   ),
-
                   const SizedBox(height: 10),
                   DropdownMenu<Product>(
                     controller: searchProductController,
@@ -167,7 +139,9 @@ class _OrderPageState extends State<OrderPage> {
                     child: const Text("Descartar"),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF6D5E0F),
                         foregroundColor: Theme.of(context).colorScheme.surface,
