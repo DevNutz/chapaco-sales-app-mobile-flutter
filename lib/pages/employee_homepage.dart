@@ -17,7 +17,9 @@ class EmployeeHomepage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             leading: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.menu_rounded)),
+              onPressed: () {},
+              icon: const Icon(Icons.menu_rounded),
+            ),
             title: Text(branchName),
             centerTitle: true,
           ),
@@ -41,13 +43,11 @@ class EmployeeHomepage extends StatelessWidget {
                     itemCount: tableProvider.tables.length,
                     itemBuilder: (context, index) {
                       return TableCard(
-                        title:
-                            tableProvider.tables[index].tableNumber.toString(),
+                        title: tableProvider.tables[index].tableNumber.toString(),
                         tableState: tableProvider.tables[index].state,
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => OrderPage(
-                                  table: tableProvider.tables[index])));
+                              builder: (context) => OrderPage(table: tableProvider.tables[index])));
                         },
                       );
                     },

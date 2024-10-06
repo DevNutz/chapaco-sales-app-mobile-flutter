@@ -5,9 +5,8 @@ class VersionText extends StatefulWidget {
   const VersionText({super.key});
 
   @override
-  _VersionTextState createState() => _VersionTextState();
+  State<VersionText> createState() => _VersionTextState();
 }
-
 
 class _VersionTextState extends State<VersionText> {
   String appVersion = '';
@@ -32,7 +31,7 @@ class _VersionTextState extends State<VersionText> {
       textAlign: TextAlign.start,
       style: const TextStyle(
         fontSize: 14.0,
-        height: 20.0 / 14.0, // Flutter uses a multiplier for line height
+        height: 20.0 / 14.0,
         fontWeight: FontWeight.w400,
         fontFamily: 'Roboto',
         color: Color(0xFFE8E2D4),
