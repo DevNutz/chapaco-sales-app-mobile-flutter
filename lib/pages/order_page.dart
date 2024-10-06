@@ -67,8 +67,7 @@ class _OrderPageState extends State<OrderPage> {
                         selected: widget.table.state == state,
                         onSelected: (value) {
                           setState(() {
-                            tableProvider.updateTableState(
-                                widget.table.id, state);
+                            tableProvider.updateTableState(widget.table.id, state);
                           });
                         },
                       );
@@ -87,8 +86,7 @@ class _OrderPageState extends State<OrderPage> {
                         selectedProduct = value;
                       });
                     },
-                    dropdownMenuEntries:
-                        productProvider.products.map((product) {
+                    dropdownMenuEntries: productProvider.products.map((product) {
                       return DropdownMenuEntry<Product>(
                         value: product,
                         label: product.name,
@@ -106,8 +104,7 @@ class _OrderPageState extends State<OrderPage> {
                         child: TextFormField(
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
-                              label: Text("Cantidad"),
-                              border: OutlineInputBorder()),
+                              label: Text("Cantidad"), border: OutlineInputBorder()),
                         ),
                       ),
                       SizedBox(
